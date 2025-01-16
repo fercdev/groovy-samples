@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'NAME_PARAMETER', defaultValue: 'Fer', description: 'nombre parametro')
+        booleanParam(name: 'IS_OLD', defaultValue: true, description: 'parametro booleano')
+    }
+  
+    stages {
+        stage('Mostrar variables') {
+            steps {
+                echo "Dato del parameter string: ${params.NAME_PARAMETER}"
+                echo "Dato del parameter boolean: ${params.IS_OLD}"
+            }
+        }
+    }
+}
