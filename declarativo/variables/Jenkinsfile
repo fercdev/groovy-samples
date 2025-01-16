@@ -1,4 +1,5 @@
 pipeline {
+    agent any
 
     environment {
         CUSTOM_VAR = 'mi_variable'
