@@ -14,7 +14,13 @@ pipeline {
         stage('Tarea por tiempo') {
             steps {
                 echo "Empezando simulacion de tarea larga..."
-                sleep(time: 3, unit: 'MINUTES')
+                sleep(time: 1, unit: 'MINUTES')
+            }
+        }
+
+        stage('Finalizando') {
+            steps {
+                echo "Tarea procesada..."
             }
         }
     }
