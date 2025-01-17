@@ -13,7 +13,7 @@ pipeline {
         stage('Tarea por tiempo') {
             steps {
                 echo "Empezando simulacion de tarea larga..."
-                catchError(buildResult: 'FAILURE', stageResult: 'FAILURE') {
+                catchError(buildResult: 'ABORTED', stageResult: 'ABORTED') {
                     echo 'Empezando la actividad de error...'
                     sleep(time: 2, unit: 'MINUTES')
                 }
@@ -28,8 +28,17 @@ pipeline {
     }
 
     post {
+        always {
+            script {
+                if (currentBuild.result == 'ABORTED') {
+                    currentBuild.result == 'FAILURE'
+                    echo 'ESTADO EN ABORTADO O FALLIDO'
+                }
+            }
+        }
+
         failure {
-            echo 'EL PIPELINE HA FALLADO, MOTIVO TIMEOUT'
+            echo 'PIPELINE SETEADO CON UN ESTADO FALLIDO DEBIDO AL TIMEOUT'
         }
     }
 }
