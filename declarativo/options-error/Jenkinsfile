@@ -25,11 +25,11 @@ pipeline {
                 echo "Tarea procesada..."
             }
         }
+    }
 
-        post {
-            failure {
-                echo 'EL PIPELINE HA FALLADO, MOTIVO TIMEOUT'
-            }
+    post {
+        failure {
+            echo 'EL PIPELINE HA FALLADO, MOTIVO TIMEOUT'
         }
     }
 }
