@@ -31,14 +31,9 @@ pipeline {
         always {
             script {
                 if (currentBuild.result == 'ABORTED') {
-                    currentBuild.result == 'FAILURE'
                     echo 'ESTADO EN ABORTADO O FALLIDO'
                 }
             }
-        }
-
-        failure {
-            echo 'PIPELINE SETEADO CON UN ESTADO FALLIDO DEBIDO AL TIMEOUT'
         }
     }
 }
