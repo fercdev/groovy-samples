@@ -11,9 +11,7 @@ pipeline {
                 sh 'pip install flask'
             }
         }
-    }
 
-    stages {
         stage('Corre tests') {
             steps {
                 sh 'python -m unittest'
